@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+  }
+  
+  .menu {
+    flex: 1;
+    background:var(--bg-soft);
+  }
+  
+  .contentP {
+    flex: 4;
+  }
+  

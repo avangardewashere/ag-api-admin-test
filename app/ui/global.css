@@ -1,4 +1,17 @@
-*{
-    margin:unset;
-    padding:unset;
+* {
+  margin: unset;
+  padding: unset;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #151c2c;
+  --bg-soft: #182237;
+  --text: white;
+  --textSoft: #b7bac1;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text); 
 }

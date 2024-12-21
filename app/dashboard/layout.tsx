@@ -1,14 +1,15 @@
-import { IDashboardLayout } from "../types";
-import Navbar from "../ui/dashboard/navbar/navbar";
-import Sidebar from "../ui/dashboard/sidebar/sidebar";
+import { IDashboardLayout } from "./../types";
+import Navbar from "./../ui/dashboard/navbar/navbar";
+import styles from "./index.module.css";
+import Sidebar from "./../ui/dashboard/sidebar/sidebar";
 
 const DashBoardLayout = ({ children }: IDashboardLayout) => {
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.menu}>
         <Sidebar />
       </div>
-      <div>
+      <div className={styles.content}>
         <Navbar />
         <div>dashboard</div>
       </div>
