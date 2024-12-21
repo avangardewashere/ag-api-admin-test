@@ -5,9 +5,11 @@
   .menu {
     flex: 1;
     background:var(--bg-soft);
+    padding:20px;
   }
   
-  .contentP {
+  .content {
     flex: 4;
+    padding:20px;
   }
   

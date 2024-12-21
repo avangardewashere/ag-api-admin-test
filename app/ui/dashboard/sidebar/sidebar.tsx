@@ -1,5 +1,6 @@
+import styles from "./index.module.css"
 const Sidebar = ( ) =>{
-    return(<div>
+    return(<div className={styles.container}>
         <span>Sidebar</span>
     </div>)
 }
