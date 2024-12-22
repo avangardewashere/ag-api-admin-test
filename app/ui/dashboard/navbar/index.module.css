@@ -34,3 +34,7 @@
     border:none;
     color:var(--textSoft);
 }
+
+.input:focus{
+    outline:none;
+}
