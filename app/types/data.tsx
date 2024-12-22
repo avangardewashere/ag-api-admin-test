@@ -7,7 +7,8 @@ import {
   MdSupervisedUserCircle,
   MdWork,
 } from "react-icons/md";
-export const MenuItems = [
+import { MenuGroup } from ".";
+export const MenuItems:MenuGroup[] = [
   {
     title: "Pages",
     list: [
