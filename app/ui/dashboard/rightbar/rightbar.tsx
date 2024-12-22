@@ -1,9 +1,9 @@
 import styles from "./index.module.css";
 
-const Charts = ( ) =>{
+const Rightbar = ( ) =>{
     return(<div className={styles.container}>
-        <span>Charts</span>
+        <span>Rightbar</span>
     </div>)
 }
 
-export default Charts;
+export default Rightbar;
