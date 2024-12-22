@@ -24,12 +24,12 @@ export const MenuItems:MenuGroup[] = [
       },
       {
         title: "Products",
-        path: "/dashboard/users",
+        path: "/dashboard/products",
         icon: <MdShoppingBag />,
       },
       {
         title: "Transactions",
-        path: "/dashboard/users",
+        path: "/dashboard/transactions",
         icon: <MdAttachMoney />,
       },
     ],
