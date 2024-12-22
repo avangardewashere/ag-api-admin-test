@@ -9,7 +9,7 @@ export interface MenuItem {
     icon: React.ReactNode;
   }
   
-  export interface MenuGroup {
+  export  interface MenuGroup {
     title: string;
     list: MenuItem[];
   }
