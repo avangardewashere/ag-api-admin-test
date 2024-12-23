@@ -14,17 +14,20 @@ const Transactions = () => {
             <td>Amount</td>
           </tr>
         </thead>
+
         <tbody>
           <tr>
             <td>
-              <Image
-                src={defaultImg}
-                alt="default-no-avaatar-image"
-                width={40}
-                height={40}
-                className={styles.userImage}
-              />
-              John Doe
+              <div className={styles.user}>
+                <Image
+                  src={defaultImg}
+                  alt="default-no-avaatar-image"
+                  width={40}
+                  height={40}
+                  className={styles.userImage}
+                />
+                John Doe
+              </div>
             </td>
             <td>
               <span className={`${styles.status} ${styles.pending}`}>
@@ -37,15 +40,18 @@ const Transactions = () => {
 
           <tr>
             <td>
-              <Image
-                src={defaultImg}
-                alt="default-no-avaatar-image"
-                width={40}
-                height={40}
-                className={styles.userImage}
-              />
-              John Doe
+              <div className={styles.user}>
+                <Image
+                  src={defaultImg}
+                  alt="default-no-avaatar-image"
+                  width={40}
+                  height={40}
+                  className={styles.userImage}
+                />
+                Jenny Click
+              </div>
             </td>
+
             <td>
               <span className={`${styles.status} ${styles.done}`}>Done</span>
             </td>
@@ -55,14 +61,16 @@ const Transactions = () => {
 
           <tr>
             <td>
-              <Image
-                src={defaultImg}
-                alt="default-no-avaatar-image"
-                width={40}
-                height={40}
-                className={styles.userImage}
-              />
-              John Doe
+              <div className={styles.user}>
+                <Image
+                  src={defaultImg}
+                  alt="default-no-avaatar-image"
+                  width={40}
+                  height={40}
+                  className={styles.userImage}
+                />
+                Stephen Hey
+              </div>
             </td>
             <td>
               <span className={`${styles.status} ${styles.cancelled}`}>
