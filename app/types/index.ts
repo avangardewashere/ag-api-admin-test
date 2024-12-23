@@ -13,3 +13,10 @@ export interface MenuItem {
     title: string;
     list: MenuItem[];
   }
+
+
+  export interface IChartData{
+    name:string,
+    visit:number,
+    click:number
+  }
