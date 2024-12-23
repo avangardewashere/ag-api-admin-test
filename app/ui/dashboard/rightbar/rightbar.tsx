@@ -1,9 +1,50 @@
+import Image from "next/image";
 import styles from "./index.module.css";
+import { MdPlayCircleFilled } from "react-icons/md";
 
-const Rightbar = ( ) =>{
-    return(<div className={styles.container}>
-        <span>Rightbar</span>
-    </div>)
-}
+const Rightbar = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.item}>
+        <div className={styles.bgContainer}>
+          {/* <Image src="/astronaut.png" alt="" fill /> */}
+        </div>
+        <div className={styles.texts}>
+          <span className={styles.notification}>🔥Available now</span>
+          <h3 className={styles.title}>
+            How to use the new version of the admin dashboard?
+          </h3>
+          <span className={styles.subtitle}> Takes 3 minutes learn</span>
+          <p className={styles.description}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+            tempora labore quam dicta
+          </p>
+          <button className={styles.button}>
+            <MdPlayCircleFilled />
+            Watch
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.item}>
+        <div className={styles.texts}>
+          <span className={styles.notification}>🔥Available now</span>
+          <h3 className={styles.title}>
+            How to use the new version of the admin dashboard?
+          </h3>
+          <span className={styles.subtitle}> Takes 3 minutes learn</span>
+          <p className={styles.description}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+            tempora labore quam dicta
+          </p>
+          <button className={styles.button}>
+            <MdPlayCircleFilled />
+            Watch
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Rightbar;
