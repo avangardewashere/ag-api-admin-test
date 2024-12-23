@@ -11,7 +11,7 @@ const DashBoardLayout = ({ children }: IDashboardLayout) => {
       </div>
       <div className={styles.content}>
         <Navbar />
-        <div>dashboard</div>
+       {children}
       </div>
     </div>
   );
