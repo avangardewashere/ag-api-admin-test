@@ -1,10 +1,9 @@
-
 import styles from "./index.module.css";
 
-const UsersPage = ( ) =>{
+const Search = ( ) =>{
     return(<div className={styles.container}>
-        <span>UsersPage</span>
+        <span>Search</span>
     </div>)
 }
 
-export default UsersPage;
+export default Search;

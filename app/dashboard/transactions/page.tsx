@@ -1,10 +1,9 @@
-
 import styles from "./index.module.css";
 
-const UsersPage = ( ) =>{
+const Transactions = ( ) =>{
     return(<div className={styles.container}>
-        <span>UsersPage</span>
+        <span>Transactions</span>
     </div>)
 }
 
-export default UsersPage;
+export default Transactions;
