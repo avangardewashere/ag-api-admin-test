@@ -2,6 +2,7 @@ import { IDashboardLayout } from "./../types";
 import Navbar from "./../ui/dashboard/navbar/navbar";
 import styles from "./index.module.css";
 import Sidebar from "./../ui/dashboard/sidebar/sidebar";
+import Footer from "../ui/dashboard/footer/footer";
 
 const DashBoardLayout = ({ children }: IDashboardLayout) => {
   return (
@@ -11,7 +12,8 @@ const DashBoardLayout = ({ children }: IDashboardLayout) => {
       </div>
       <div className={styles.content}>
         <Navbar />
-       {children}
+        {children}
+        <Footer />
       </div>
     </div>
   );

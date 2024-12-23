@@ -28,11 +28,11 @@ const Rightbar = () => {
 
       <div className={styles.item}>
         <div className={styles.texts}>
-          <span className={styles.notification}>🔥Available now</span>
+          <span className={styles.notification}>🚀 Coming Soon!</span>
           <h3 className={styles.title}>
-            How to use the new version of the admin dashboard?
+            New sever actions are available, partial pre-rendering is coming up!
           </h3>
-          <span className={styles.subtitle}> Takes 3 minutes learn</span>
+          <span className={styles.subtitle}>Boost your productivity</span>
           <p className={styles.description}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
             tempora labore quam dicta
