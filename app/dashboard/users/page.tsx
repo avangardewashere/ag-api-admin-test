@@ -3,6 +3,8 @@ import styles from "./index.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import defaultImg from "@/assets/images/user.png";
+import Pagination from "@/app/ui/dashboard/pagination/pagination";
+ 
 const UsersPage = () => {
   return (
     <div className={styles.container}>
@@ -12,7 +14,7 @@ const UsersPage = () => {
           <button className={styles.addButton}>Add new</button>
         </Link>
       </div>
-      <div className={styles.table}>
+      <table className={styles.table}>
         <thead>
           <tr>
             <td>Name</td>
@@ -54,7 +56,8 @@ const UsersPage = () => {
             </td>
           </tr>
         </tbody>
-      </div>
+      </table>
+      <Pagination />
     </div>
   );
 };
