@@ -9,7 +9,7 @@ const Transactions = () => {
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder={"Search for a product"} />
-        <Link href="dashboard/users/add">
+        <Link href="/dashboard/products/add">
           <button className={styles.addButton}>Add new</button>
         </Link>
       </div>
@@ -45,7 +45,7 @@ const Transactions = () => {
             <td>Active</td>
             <td>
               <div className={styles.buttons}>
-                <Link href={`/dashboard/products/add`}>
+                <Link href={`/`}>
                   <button className={`${styles.button} ${styles.view}`}>
                     View
                   </button>
