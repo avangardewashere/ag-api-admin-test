@@ -24,12 +24,12 @@ const SingleUserPage = () => {
           <label htmlFor="email">email</label>
           <input type="email" name="email" id="email" placeholder="email" />
 
-          <label htmlFor="passowrd">passowrd</label>
+          <label htmlFor="password">password</label>
           <input
             type="password"
-            name="passowrd"
-            id="passowrd"
-            placeholder="passowrd"
+            name="password"
+            id="password"
+            placeholder="password"
           />
 
           <label htmlFor="phone">phone</label>
