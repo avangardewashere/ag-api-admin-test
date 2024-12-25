@@ -22,3 +22,8 @@ export interface IChartData {
 export interface ISearch {
   placeholder: string;
 }
+
+
+export interface IConnection {
+  isConnected?: string;
+}
