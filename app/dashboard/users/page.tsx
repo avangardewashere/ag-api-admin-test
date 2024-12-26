@@ -13,7 +13,9 @@ import defaultImg from "@/assets/images/user.png";
 const UsersPage = async ({searchParams}:{searchParams:ISearchParams}) => {
 
   const q = searchParams?.q || "";
-  const users = await fetchUsers(q)
+  const page = await searchParams?.page || 1;
+  const users = await fetchUsers(q,page.toString())
+
 
  
   console.log(users);
