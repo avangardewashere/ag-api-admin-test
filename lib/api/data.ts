@@ -22,7 +22,7 @@ export const fetchUsers = async (query: string, page: string) => {
 };
 
 export const fetchProducts = async (q: string, page: string) => {
-  const regex = new RegExp(q, "1");
+  const regex = new RegExp(q, "i");
 
   const ITEM_PER_PAGE = 2;
 

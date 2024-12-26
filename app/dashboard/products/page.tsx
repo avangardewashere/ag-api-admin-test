@@ -5,16 +5,15 @@ import Search from "@/app/ui/dashboard/search/search";
 import Image from "next/image";
 import defaultImg from "@/assets/images/user.png";
 import { ISearchParams } from "@/app/types";
+import { fetchProducts } from "@/lib/api/data";
 const Transactions = async ({
   searchParams,
 }: {
   searchParams: ISearchParams;
 }) => {
-
-
   const q = searchParams?.q || "";
   const page = searchParams?.page || "1";
-  const {count,user} =await fetchUsers(q,page);
+  const { count, products } = await fetchProducts(q, page);
 
   return (
     <div className={styles.container}>
@@ -36,40 +35,43 @@ const Transactions = async ({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image
-                  className={styles.userImage}
-                  src={defaultImg}
-                  alt="no-avatar"
-                  width={40}
-                  height={40}
-                />
-                Iphone
-              </div>
-            </td>
-            <td>Desc</td>
-            <td>PHP 80,000</td>
-            <td>13.1.2022</td>
+          {products?.map((product) => (
+            <tr key={product.id}>
+              <td>
+                <div className={styles.user}>
+                  <Image
+                    className={styles.userImage}
+                    src={product.img ?? defaultImg}
+                    alt="no-avatar"
+                    width={40}
+                    height={40}
+                  />
+                  {product.title}
+                </div>
+              </td>
+              <td>{product?.descriptioin}</td>
+              <td>{product?.price}</td>
+              <td>13.1.2022</td>
+              {/* <td>{product.createdAt.toString().splice(4, 16)}</td> */}
 
-            <td>Active</td>
-            <td>
-              <div className={styles.buttons}>
-                <Link href={`/dashboard/products/test`}>
-                  <button className={`${styles.button} ${styles.view}`}>
-                    View
+              <td>{product?.stock}</td>
+              <td>
+                <div className={styles.buttons}>
+                  <Link href={`/dashboard/products/` + product.id}>
+                    <button className={`${styles.button} ${styles.view}`}>
+                      View
+                    </button>
+                  </Link>
+                  <button className={`${styles.button} ${styles.delete}`}>
+                    Delete
                   </button>
-                </Link>
-                <button className={`${styles.button} ${styles.delete}`}>
-                  Delete
-                </button>
-              </div>
-            </td>
-          </tr>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
