@@ -14,7 +14,7 @@ const UsersPage = async ({searchParams}:{searchParams:ISearchParams}) => {
 
   const q = searchParams?.q || "";
   const page = await searchParams?.page || 1;
-  const users = await fetchUsers(q,page.toString())
+  const {count, users }= await fetchUsers(q,page.toString())
 
 
  
@@ -74,7 +74,7 @@ const UsersPage = async ({searchParams}:{searchParams:ISearchParams}) => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
