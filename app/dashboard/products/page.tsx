@@ -4,7 +4,18 @@ import Link from "next/link";
 import Search from "@/app/ui/dashboard/search/search";
 import Image from "next/image";
 import defaultImg from "@/assets/images/user.png";
-const Transactions = () => {
+import { ISearchParams } from "@/app/types";
+const Transactions = async ({
+  searchParams,
+}: {
+  searchParams: ISearchParams;
+}) => {
+
+
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || "1";
+  const {count,user} =await fetchUsers(q,page);
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
