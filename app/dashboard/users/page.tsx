@@ -4,8 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import defaultImg from "@/assets/images/user.png";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
- 
-const UsersPage = () => {
+import { fetchUsers } from "@/lib/api/data";
+
+const UsersPage = async () => {
+  const users = await fetchUsers();
+  console.log(users);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -26,36 +29,39 @@ const UsersPage = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image
-                  className={styles.userImage}
-                  src={defaultImg}
-                  alt="no-avatar"
-                  width={40}
-                  height={40}
-                />
-                John Doe
-              </div>
-            </td>
-            <td>john@gmail.com</td>
-            <td>13.1.2022</td>
-            <td>Admin</td>
-            <td>Active</td>
-            <td>
-              <div className={styles.buttons}>
-                <Link href={`/dashboard/users/test`}>
-                  <button className={`${styles.button} ${styles.view}`}>
-                    View
+          {users?.map((item) => (
+            <tr key={item?._id}>
+              <td>
+                <div className={styles.user}>
+                  <Image
+                    className={styles.userImage}
+                    src={item?.img}
+                    alt="no-avatar"
+                    width={40}
+                    height={40}
+                  />
+                  {item?.username ?? "No username"}
+                </div>
+              </td>
+              <td>{item?.email}</td>
+              <td>13.1.2022</td>
+              {/* <td>{item?.createdAt?.toString().slice(4,16)}</td> */}
+              <td>{item?.isAdmin ?"Admin" :"User"}</td>
+              <td>{item?.isActive ?"Active" :"Inactive"}</td>
+              <td>
+                <div className={styles.buttons}>
+                  <Link href={`/dashboard/users/`+ item._id}>
+                    <button className={`${styles.button} ${styles.view}`}>
+                      View
+                    </button>
+                  </Link>
+                  <button className={`${styles.button} ${styles.delete}`}>
+                    Delete
                   </button>
-                </Link>
-                <button className={`${styles.button} ${styles.delete}`}>
-                  Delete
-                </button>
-              </div>
-            </td>
-          </tr>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <Pagination />
