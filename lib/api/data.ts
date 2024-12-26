@@ -42,3 +42,23 @@ export const fetchProducts = async (q: string, page: string) => {
     throw new Error(e as string);
   }
 };
+
+export const fetchSingleUser = async (id:string) =>{
+  try {
+    connectToDB();
+    const user = await User.findById(id);
+    return user
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export const fetchSingleProduct = async (id:string) =>{
+  try {
+    connectToDB();
+    const product = await Product.findById(id);
+    return product
+  } catch (e) {
+    console.log(e)
+  }
+}
