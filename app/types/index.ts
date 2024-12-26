@@ -23,7 +23,10 @@ export interface ISearch {
   placeholder: string;
 }
 
-
 export interface IConnection {
   isConnected?: string;
+}
+
+export interface ISearchParams {
+  [key: string]: string ;
 }

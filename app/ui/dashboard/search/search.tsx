@@ -11,14 +11,17 @@ const Search = ({ placeholder }: ISearch) => {
 
   const params = new URLSearchParams(searchParams);
 
- 
   console.log(searchParams);
   console.log(pathname);
 
   const handleOnChange = (variable: string) => {
     console.log(variable);
 
-    params.set("q", variable);
+    if (variable) {
+      params.set("q", variable);
+    } else {
+      params.delete("q");
+    }
 
     replace(`${pathname}?${params}`);
   };

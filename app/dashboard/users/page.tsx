@@ -2,12 +2,20 @@ import Search from "@/app/ui/dashboard/search/search";
 import styles from "./index.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import defaultImg from "@/assets/images/user.png";
+
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchUsers } from "@/lib/api/data";
+import { ISearchParams } from "@/app/types";
+import defaultImg from "@/assets/images/user.png";
 
-const UsersPage = async () => {
-  const users = await fetchUsers();
+
+
+const UsersPage = async ({searchParams}:{searchParams:ISearchParams}) => {
+
+  const q = searchParams?.q || "";
+  const users = await fetchUsers(q)
+
+ 
   console.log(users);
   return (
     <div className={styles.container}>
