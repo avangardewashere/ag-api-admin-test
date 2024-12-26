@@ -7,17 +7,13 @@ import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchUsers } from "@/lib/api/data";
 import { ISearchParams } from "@/app/types";
 import defaultImg from "@/assets/images/user.png";
+import { deleteUser } from "@/lib/actions";
 
-
-
-const UsersPage = async ({searchParams}:{searchParams:ISearchParams}) => {
-
+const UsersPage = async ({ searchParams }: { searchParams: ISearchParams }) => {
   const q = searchParams?.q || "";
-  const page = await searchParams?.page || 1;
-  const {count, users }= await fetchUsers(q,page.toString())
+  const page = (await searchParams?.page) || 1;
+  const { count, users } = await fetchUsers(q, page.toString());
 
-
- 
   console.log(users);
   return (
     <div className={styles.container}>
@@ -56,18 +52,21 @@ const UsersPage = async ({searchParams}:{searchParams:ISearchParams}) => {
               <td>{item?.email}</td>
               <td>13.1.2022</td>
               {/* <td>{item?.createdAt?.toString().slice(4,16)}</td> */}
-              <td>{item?.isAdmin ?"Admin" :"User"}</td>
-              <td>{item?.isActive ?"Active" :"Inactive"}</td>
+              <td>{item?.isAdmin ? "Admin" : "User"}</td>
+              <td>{item?.isActive ? "Active" : "Inactive"}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/users/`+ item._id}>
+                  <Link href={`/dashboard/users/` + item._id}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
                   </Link>
-                  <button className={`${styles.button} ${styles.delete}`}>
-                    Delete
-                  </button>
+                  <form action={deleteUser}>
+                    <input type="hidden" value={item.id} name="id" />
+                    <button className={`${styles.button} ${styles.delete}`}>
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
