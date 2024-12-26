@@ -1,9 +1,10 @@
+import { addUser } from "@/lib/actions";
 import styles from "./index.module.css";
 
 const AddProductsPage = () => {
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form action={addUser} className={styles.form}>
         <input
           type="text"
           name="username"
