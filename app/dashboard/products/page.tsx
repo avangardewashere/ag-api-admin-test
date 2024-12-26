@@ -52,7 +52,7 @@ const Transactions = async ({
               <td>{product?.descriptioin}</td>
               <td>{product?.price}</td>
               <td>13.1.2022</td>
-              {/* <td>{product.createdAt.toString().splice(4, 16)}</td> */}
+              {/* <td>{product.createdAt.toString().slice(4, 16)}</td> */}
 
               <td>{product?.stock}</td>
               <td>
