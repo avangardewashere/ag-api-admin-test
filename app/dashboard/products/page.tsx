@@ -6,6 +6,7 @@ import Image from "next/image";
 import defaultImg from "@/assets/images/user.png";
 import { ISearchParams } from "@/app/types";
 import { fetchProducts } from "@/lib/api/data";
+import { deleteProduct } from "@/lib/actions";
 const Transactions = async ({
   searchParams,
 }: {
@@ -62,9 +63,12 @@ const Transactions = async ({
                       View
                     </button>
                   </Link>
-                  <button className={`${styles.button} ${styles.delete}`}>
-                    Delete
-                  </button>
+                  <form action={deleteProduct}>
+                    <input type="hidden" name="id" value={product.id} />
+                    <button className={`${styles.button} ${styles.delete}`}>
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
