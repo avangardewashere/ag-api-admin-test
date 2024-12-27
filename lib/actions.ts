@@ -4,6 +4,7 @@ import { Product, User } from "./models/models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
+import { IUserType } from "@/app/types";
 export const addUser = async (formData: FormData) => {
   //   const { username, email, password, phone, address, isAdmin, isActive } =
   //     Object.fromEntries(formData);
@@ -140,7 +141,7 @@ export const updateUser = async (formData: FormData) => {
         delete updateFields[key as keyof typeof updateFields];
       }
     });
-    
+
     // Update user in the database
     await User.findByIdAndUpdate(id, updateFields, { new: true });
   } catch (error) {
@@ -150,4 +151,47 @@ export const updateUser = async (formData: FormData) => {
 
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
+};
+
+export const updateProducts = async (formData: FormData) => {
+  const formDataEntries = Object.fromEntries(formData.entries());
+  const { id, title, description, price, stock, color, size } =
+    formDataEntries as {
+      title: string;
+      description?: string;
+      price: string;
+      stock?: string;
+      color?: string;
+      size?: string;
+    };
+
+  try {
+    connectToDB();
+
+    const updateFields: {
+      title: string;
+      description?: string;
+      price: string;
+      stock?: string;
+      color?: string;
+      size?: string;
+    } = {
+      title,
+      description,
+      price,
+      stock,
+      color,
+      size,
+    };
+
+    Object.keys(updateFields).forEach((key) => {
+      if (!updateFields[key as keyof typeof updateFields]) {
+        delete updateFields[key as keyof typeof updateFields];
+      }
+    });
+    // Update  Product in the database
+    await Product.findByIdAndUpdate(id, updateFields, { new: true });
+  } catch (e) {
+    console.log(e);
+  }
 };

@@ -56,14 +56,14 @@ const SingleUserPage = async ({ params }: { params: { id: string } }) => {
 
           <label htmlFor="isAdmin">is Admin</label>
           <select name="isAdmin" id="isAdmin">
-            <option value="true">Yes</option>
-            <option value="true">No</option>
+            <option value="true" selected={user?.isAdmin} >Yes</option>
+            <option value="true" selected={!user?.isAdmin}>No</option>
           </select>
 
           <label htmlFor="isActive">is Active</label>
           <select name="isActive" id="isActive">
-            <option value="true">Yes</option>
-            <option value="true">No</option>
+            <option value="true" selected={user?.isActive}>Yes</option>
+            <option value="true" selected={!user?.isActive}>No</option>
           </select>
 
           <button className={styles.button}>Update Informaiton</button>
