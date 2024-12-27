@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 export const authConfig = {
+    providers:[],
     pages:{
         signIn:"/login",
     },callbacks:{
