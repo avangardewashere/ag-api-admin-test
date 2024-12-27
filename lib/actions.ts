@@ -5,6 +5,8 @@ import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 import { IUserType } from "@/app/types";
+import { sign } from "crypto";
+import { signIn } from "next-auth/react";
 export const addUser = async (formData: FormData) => {
   //   const { username, email, password, phone, address, isAdmin, isActive } =
   //     Object.fromEntries(formData);
@@ -198,4 +200,15 @@ export const updateProducts = async (formData: FormData) => {
 
   revalidatePath("/dashboard/products");
   redirect("/dashboard/products");
+};
+
+export const authenticate = async (formData: FormData) => {
+  const { username, password } = Object.fromEntries(formData);
+
+  try {
+    await signIn("credentials", { username, password });
+  } catch (error) {
+    console.log(error  );
+    throw error;
+  }
 };
