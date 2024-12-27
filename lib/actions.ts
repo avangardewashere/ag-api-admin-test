@@ -157,6 +157,7 @@ export const updateProducts = async (formData: FormData) => {
   const formDataEntries = Object.fromEntries(formData.entries());
   const { id, title, description, price, stock, color, size } =
     formDataEntries as {
+      id: string;
       title: string;
       description?: string;
       price: string;
@@ -194,4 +195,7 @@ export const updateProducts = async (formData: FormData) => {
   } catch (e) {
     console.log(e);
   }
+
+  revalidatePath("/dashboard/products");
+  redirect("/dashboard/products");
 };
