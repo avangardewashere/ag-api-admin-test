@@ -86,17 +86,68 @@ export const deleteProduct = async (formData: FormData) => {
   revalidatePath("/dashboard/products");
 };
 
-
 export const deleteUser = async (formData: FormData) => {
-    const { id } = Object.fromEntries(formData);
-  
-    try {
-      connectToDB();
-      await User.findByIdAndDelete(id);
-    } catch (err) {
-      console.log(err);
-      throw new Error("Failed to delete the User");
-    }
-    revalidatePath("/dashboard/users");
-  };
-  
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await User.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete the User");
+  }
+  revalidatePath("/dashboard/users");
+};
+
+export const updateUser = async (formData: FormData) => {
+  const formDataEntries = Object.fromEntries(formData.entries());
+  const { id, username, email, password, phone, address, isAdmin, isActive } =
+    formDataEntries as {
+      id: string;
+      username?: string;
+      email?: string;
+      password?: string;
+      phone?: string;
+      address?: string;
+      isAdmin?: string;
+      isActive?: string;
+    };
+
+  try {
+    connectToDB();
+    // Prepare fields to update
+    const updateFields: Partial<{
+      username: string;
+      email: string;
+      password: string;
+      phone: string;
+      address: string;
+      isAdmin: boolean;
+      isActive: boolean;
+    }> = {
+      username,
+      email,
+      password,
+      phone,
+      address,
+      isAdmin: isAdmin === "true",
+      isActive: isActive === "true",
+    };
+
+    // Remove empty or undefined fields
+    Object.keys(updateFields).forEach((key) => {
+      if (!updateFields[key as keyof typeof updateFields]) {
+        delete updateFields[key as keyof typeof updateFields];
+      }
+    });
+    
+    // Update user in the database
+    await User.findByIdAndUpdate(id, updateFields, { new: true });
+  } catch (error) {
+    console.log(error);
+    throw new Error("failed to update user");
+  }
+
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
+};

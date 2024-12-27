@@ -60,7 +60,7 @@ const UsersPage = async ({ searchParams }: { searchParams: ISearchParams }) => {
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
-                  </Link>
+                  </Link> 
                   <form action={deleteUser}>
                     <input type="hidden" value={item.id} name="id" />
                     <button className={`${styles.button} ${styles.delete}`}>

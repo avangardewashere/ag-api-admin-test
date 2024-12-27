@@ -1,5 +1,7 @@
+import { json } from "stream/consumers";
 import { User, Product } from "../models/models";
 import { connectToDB } from "../utils";
+import { IUserType } from "@/app/types";
 
 export const fetchUsers = async (query: string, page: string) => {
   const regex = new RegExp(query, "i");
@@ -43,11 +45,11 @@ export const fetchProducts = async (q: string, page: string) => {
   }
 };
 
-export const fetchSingleUser = async (id:string) =>{
+export const fetchSingleUser  = async (id:string) => {
   try {
     connectToDB();
-    const user = await User.findById(id);
-    return user
+    const user = await User.findById(id).lean();
+    return user as IUserType | null;
   } catch (e) {
     console.log(e)
   }
